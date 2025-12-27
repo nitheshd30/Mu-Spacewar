@@ -1,4 +1,4 @@
-name: Build UEFI for active devices
+name: Build UEFI for spacewar
 on:
   push:
     branches: ["main"]
@@ -30,12 +30,12 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - name: Build UEFI for active devices
+      - name: Build UEFI for spacewar
         run: bash ./setup_env.sh -p apt && bash ./build_uefi.sh -d spacewar -r DEBUG -i
 
       - name: Upload UEFI images
         uses: actions/upload-artifact@v4
         with:
-          name: uefi-images
+          name: uefi-spacewar
           path: ./Mu-*
           compression-level: 9
